@@ -1,4 +1,4 @@
-a, h1 {
-  color: red;
-  font-weight: bold;
+a:hover {  
+  color : blue; 
 }
+
