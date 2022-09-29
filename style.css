@@ -16,4 +16,7 @@ aside {
 article {
   flex: 3
 }
-
+.small {
+  width: 256px;
+  height: 170px;
+}
