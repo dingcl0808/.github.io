@@ -13,3 +13,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 function getlocation(){
     ttJSCore.invoke("getLocation", "", 1);
 }
+function getlocation2(){
+    tt.miniProgram.navigateBack({
+        delta: 1,
+      })
+}
