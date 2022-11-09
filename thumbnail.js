@@ -11,10 +11,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 <!--由于对象映射，所以调用test对象等于调用Android映射的对象-->
 function getlocation(){
-    ttJSCore.invoke("getLocation", "", 1);
+    ttJSCore.invoke("closeThisPage");
 }
 function getlocation2(){
-    tt.miniProgram.navigateBack({
-        delta: 1,
-      })
+    ttJSCore.invoke("enterMiniapp");
 }
