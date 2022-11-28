@@ -44,7 +44,40 @@
 <!--     <script src="https://lf1-cdn-tos.bytegoofy.com/goofy/developer/jssdk/jssdk-1.0.3.js"></script> -->
     <script src="https://lf1-cdn-tos.bytegoofy.com/goofy/developer/jssdk/jssdk-1.1.0.js"></script>
     <script src="main.afe25.js" charset="utf-8"></script>
-    <script src="main.afe25.js" charset="utf-8"></script>
+    <script src="src/settings.bbff0.js" charset="utf-8"></script>
+    <script type="text/javascript">
+    (function () {
+        // open web debugger console
+        if (typeof VConsole !== 'undefined') {
+            window.vConsole = new VConsole();
+        }
+
+        var debug = window._CCSettings.debug;
+        var splash = document.getElementById('splash');
+        splash.style.display = 'block';
+
+        function loadScript(moduleName, cb) {
+            function scriptLoaded() {
+                document.body.removeChild(domScript);
+                domScript.removeEventListener('load', scriptLoaded, false);
+                cb && cb();
+            };
+            var domScript = document.createElement('script');
+            domScript.async = true;
+            domScript.src = moduleName;
+            domScript.addEventListener('load', scriptLoaded, false);
+            document.body.appendChild(domScript);
+        }
+
+        loadScript(debug ? 'cocos2d-js.js' : 'cocos2d-js-min.c2be3.js', function () {
+            if (CC_PHYSICS_BUILTIN || CC_PHYSICS_CANNON) {
+                loadScript(debug ? 'physics.js' : 'physics-min.js', window.boot);
+            } else {
+                window.boot();
+            }
+        });
+    })();
+</script>
 </head>
 <body>
 <header>
